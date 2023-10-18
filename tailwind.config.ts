@@ -13,6 +13,9 @@ const config: Config = {
         secondary: "#85FDF7",
         background: "#2C293D",
       },
+      gridTemplateRows: {
+        "home-column": "0.8fr 2fr 2fr",
+      },
     },
   },
   plugins: [],
