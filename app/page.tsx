@@ -1,3 +1,4 @@
+import Image from "next/image";
 import TagStyledText from "../components/ui/TagStyledText";
 
 export default function Home() {
@@ -26,7 +27,21 @@ export default function Home() {
       </div>
       <div className="grid grid-rows-home-column">
         <div></div>
-        <div></div>
+        <div className="flex flex-col justify-center items-center gap-y-4">
+          <div className="bg-primary rounded-full w-40 h-40 flex justify-center items-center overflow-hidden">
+            <Image
+              src="/assets/profilepic.png"
+              width={200}
+              height={200}
+              alt="Picture of me"
+            />
+          </div>
+          <p className="text-white text-lg text-center w-full">
+            I am a developer based in Valencia, Spain. I've been working on web
+            projects since 2021. I'm excited about continuous learning and
+            passionate about solving problems!
+          </p>
+        </div>
         <div></div>
       </div>
     </main>
