@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { spaceMono } from "../../utils/fonts";
+import useTypingText from "../../hooks/useTypingText";
 
 const code = `const i = {};
 i.am = ['Pedro Gardim','Web developer'];
@@ -17,29 +18,15 @@ const longestLine = Math.max(
 );
 
 export default function AutoWrittingCode() {
-  const [letterCounter, setLetterCounter] = useState(0);
   const [textFontSize, setTextFontSize] = useState(0);
   const parentRef = useRef<HTMLDivElement | null>(null);
+
+  const typingCode = useTypingText(code);
 
   const updateFontFize = () =>
     setTextFontSize(
       ((parentRef.current?.offsetWidth || 0) / longestLine) * 1.58
     );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLetterCounter((p) => {
-        if (p === code.length) {
-          clearInterval(interval);
-        }
-        return p + 1;
-      });
-    }, 50);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
 
   useEffect(() => {
     updateFontFize();
@@ -62,7 +49,7 @@ export default function AutoWrittingCode() {
         PreTag={"span"}
         CodeTag={"span"}
       >
-        {code.slice(0, letterCounter)}
+        {typingCode}
       </SyntaxHighlighter>
     </div>
   );
