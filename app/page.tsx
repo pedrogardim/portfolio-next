@@ -1,5 +1,6 @@
 import Image from "next/image";
 import TagStyledText from "../components/ui/TagStyledText";
+import AutoWrittingCode from "../components/home/AutoWrittingCode";
 
 export default function Home() {
   return (
@@ -42,7 +43,9 @@ export default function Home() {
             passionate about solving problems!
           </p>
         </div>
-        <div></div>
+        <div className="border border-secondary overflow-hiden">
+          <AutoWrittingCode />
+        </div>
       </div>
     </main>
   );
