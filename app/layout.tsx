@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Space_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../components/layout/Header";
-
-const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"] });
+import { spaceMono } from "../utils/fonts";
 
 export const metadata: Metadata = {
   title: "Pedro Gardim",
