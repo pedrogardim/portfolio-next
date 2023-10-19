@@ -21,7 +21,7 @@ export default function TagStyledText({
       >
         {children}
       </span>
-      {autoClosing && <span className="text-secondary">{"/"}</span>}
+      {autoClosing && <span className="text-secondary">{"/‌"}</span>}
       <span className="text-secondary">{">"}</span>
     </span>
   );

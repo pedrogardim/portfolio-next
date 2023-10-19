@@ -43,7 +43,7 @@ export default function Home() {
             passionate about solving problems!
           </p>
         </div>
-        <div className="border border-secondary overflow-hiden">
+        <div>
           <AutoWrittingCode />
         </div>
       </div>
