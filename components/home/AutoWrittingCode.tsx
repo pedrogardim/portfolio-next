@@ -35,7 +35,7 @@ export default function AutoWrittingCode() {
   }, []);
 
   return (
-    <div ref={parentRef}>
+    <div ref={parentRef} className="hidden md:flex">
       <SyntaxHighlighter
         language="typescript"
         useInlineStyles={false}
