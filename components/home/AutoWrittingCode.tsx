@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Tilt from "react-parallax-tilt";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { spaceMono } from "../../utils/fonts";
 import useTypingText from "../../hooks/useTypingText";
@@ -35,22 +36,24 @@ export default function AutoWrittingCode() {
   }, []);
 
   return (
-    <div ref={parentRef} className="hidden md:flex">
-      <SyntaxHighlighter
-        language="typescript"
-        useInlineStyles={false}
-        customStyle={{
-          background: "transparent",
-          color: "white",
-          ...spaceMono.style,
-          fontSize: textFontSize,
-          lineHeight: 1,
-        }}
-        PreTag={"span"}
-        CodeTag={"span"}
-      >
-        {typingCode}
-      </SyntaxHighlighter>
-    </div>
+    <Tilt>
+      <div ref={parentRef} className="hidden md:flex">
+        <SyntaxHighlighter
+          language="typescript"
+          useInlineStyles={false}
+          customStyle={{
+            background: "transparent",
+            color: "white",
+            ...spaceMono.style,
+            fontSize: textFontSize,
+            lineHeight: 1,
+          }}
+          PreTag={"span"}
+          CodeTag={"span"}
+        >
+          {typingCode}
+        </SyntaxHighlighter>
+      </div>
+    </Tilt>
   );
 }
