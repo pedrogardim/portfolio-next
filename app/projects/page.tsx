@@ -1,8 +1,5 @@
-"use client";
 import Link from "next/link";
-import Image from "next/image";
-import Button from "../../components/ui/Button";
-import Tilt from "react-parallax-tilt";
+import ProjectInfo from "../../components/projects/ProjectInfo";
 
 const MOCK_PROJECT = {
   description:
@@ -39,52 +36,7 @@ export default function Projects() {
           </Link>
         ))}
       </div>
-      <div className="grid justify-stretch grid-rows-2 text-lg text-center">
-        <div>
-          <Tilt
-            className="w-full h-full"
-            style={{ transformStyle: "preserve-3d" }}
-            gyroscope
-          >
-            {MOCK_PROJECT.images.map((e, i) => (
-              <Image
-                src={e}
-                alt=""
-                key={e}
-                layout="fill"
-                objectFit="contain"
-                className="absolute w-full h-full"
-                style={{
-                  transform: `translateZ(${i * 30}px)`,
-                }}
-              ></Image>
-            ))}
-          </Tilt>
-        </div>
-        <div className="flex flex-col gap-y-4 justify-center">
-          <span className="text-white line-clamp-4">
-            {MOCK_PROJECT.description}
-          </span>
-          <div>
-            <div className="text-primary line-clamp-2">
-              <span className="text-secondary">Frontend </span>
-              {MOCK_PROJECT.stack.frontend}
-            </div>
-            <div className="text-primary line-clamp-2">
-              <span className="text-secondary">Backend </span>
-              {MOCK_PROJECT.stack.backend}
-            </div>
-          </div>
-          <div className="flex gap-x-4 justify-center">
-            <Link href={MOCK_PROJECT.demoUrl} target="_blank">
-              <Button>Try It</Button>
-            </Link>
-            <Link href={MOCK_PROJECT.repoUrl} target="_blank">
-              <Button variant="secondary">Repo</Button>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <ProjectInfo data={MOCK_PROJECT} />
     </main>
   );
 }
