@@ -1,5 +1,8 @@
+"use client";
 import Link from "next/link";
+import Image from "next/image";
 import Button from "../../components/ui/Button";
+import Tilt from "react-parallax-tilt";
 
 const MOCK_PROJECT = {
   description:
@@ -12,7 +15,6 @@ const MOCK_PROJECT = {
   demoUrl: "https://github.com/pedrogardim/modulab",
   images: [
     "https://images.pexels.com/photos/18894573/pexels-photo-18894573/free-photo-of-edificio-bosque-arboles-vintage.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.vecteezy.com%2Fpng%2F1191178-flor-floral&psig=AOvVaw18vOMrZbfDJ0bjpQtmMl6K&ust=1699445787564000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPiV1YXvsYIDFQAAAAAdAAAAABA6",
     "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png",
   ],
 };
@@ -38,8 +40,28 @@ export default function Projects() {
         ))}
       </div>
       <div className="grid justify-stretch grid-rows-2 text-lg text-center">
-        <div className="border border-secondary"></div>
-        <div className="border border-primary flex flex-col gap-y-4 justify-center">
+        <div>
+          <Tilt
+            className="w-full h-full"
+            style={{ transformStyle: "preserve-3d" }}
+            gyroscope
+          >
+            {MOCK_PROJECT.images.map((e, i) => (
+              <Image
+                src={e}
+                alt=""
+                key={e}
+                layout="fill"
+                objectFit="contain"
+                className="absolute w-full h-full"
+                style={{
+                  transform: `translateZ(${i * 30}px)`,
+                }}
+              ></Image>
+            ))}
+          </Tilt>
+        </div>
+        <div className="flex flex-col gap-y-4 justify-center">
           <span className="text-white line-clamp-4">
             {MOCK_PROJECT.description}
           </span>
