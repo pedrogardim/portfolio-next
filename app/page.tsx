@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import TagStyledText from "../components/ui/TagStyledText";
 import AutoWrittingCode from "../components/home/AutoWrittingCode";
 
@@ -28,9 +29,11 @@ export default function Home() {
       </div>
       <div className="flex flex-col gap-y-4 order-3 items-center md:items-start">
         {["projects", "profile", "contact", "github", "cv"].map((option) => (
-          <TagStyledText button className="text-lg md:text-2xl" key={option}>
-            {option}
-          </TagStyledText>
+          <Link href={`/${option}`} key={option}>
+            <TagStyledText button className="text-lg md:text-2xl">
+              {option}
+            </TagStyledText>
+          </Link>
         ))}
       </div>
       <div className="order-4"></div>
