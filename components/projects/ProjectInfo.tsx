@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import Tilt from "react-parallax-tilt";
@@ -18,10 +17,10 @@ interface ProjectData {
 
 export default function ProjectInfo({ data }: { data: ProjectData }) {
   return (
-    <div className="grid justify-stretch grid-rows-2 text-lg text-center">
+    <div className="grid justify-stretch grid-rows-2 md:text-lg text-center">
       <div>
         <Tilt
-          className="w-full h-full"
+          className="w-full h-full max-w-full"
           style={{ transformStyle: "preserve-3d" }}
           gyroscope
         >
