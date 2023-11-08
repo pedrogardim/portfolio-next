@@ -29,9 +29,10 @@ export default function ProjectInfo({ data }: { data: ProjectData }) {
               src={e}
               alt=""
               key={e}
-              layout="fill"
-              objectFit="contain"
-              className="absolute w-full h-full"
+              width={870}
+              height={1160}
+              priority={i > 0}
+              className="absolute w-full h-full object-contain"
               style={{
                 transform: `translateZ(${i * 30}px)`,
               }}
