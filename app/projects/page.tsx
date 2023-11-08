@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectInfo from "../../components/projects/ProjectInfo";
 import Button from "../../components/ui/Button";
+import useBreakpoint from "../../hooks/useBreakpoint";
 
 const MOCK_PROJECT = {
   description:
@@ -20,6 +21,11 @@ const MOCK_PROJECT = {
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<null | number>(null);
+  const { isMobile } = useBreakpoint();
+
+  useEffect(() => {
+    if (isMobile === false && selectedProject === null) setSelectedProject(0);
+  }, [isMobile]);
 
   return (
     <main className="grid justify-center grid-rows-1 grid-cols-1 md:grid-cols-2 w-full h-full my-16">
@@ -42,7 +48,7 @@ export default function Projects() {
             className={`text-3xl font-bold mb-2 hover:text-primary ${
               selectedProject === i ? "text-primary" : "text-white"
             }`}
-            onClick={() => setSelectedProject((p) => (p === i ? null : i))}
+            onClick={() => setSelectedProject(i)}
           >
             {selectedProject === i && (
               <span className="text-secondary">{">"}</span>

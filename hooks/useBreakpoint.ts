@@ -34,5 +34,8 @@ export default function useBreakpoint() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return breakpoint;
+  return {
+    breakpoint,
+    isMobile: breakpoint && (breakpoint === "sm" || breakpoint === "md"),
+  };
 }
