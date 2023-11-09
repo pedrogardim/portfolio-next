@@ -20,12 +20,19 @@ const MOCK_PROJECT = {
 };
 
 export default function Projects() {
+  const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState<null | number>(null);
   const { isMobile } = useBreakpoint();
 
   useEffect(() => {
     if (isMobile === false && selectedProject === null) setSelectedProject(0);
   }, [isMobile]);
+
+  useEffect(() => {
+    fetch("./api/projectList").then((r) =>
+      r.json().then((r) => setProjects(r))
+    );
+  }, []);
 
   return (
     <main className="grid justify-center grid-rows-1 grid-cols-1 md:grid-cols-2 w-full h-full my-16">
@@ -35,16 +42,9 @@ export default function Projects() {
         }`}
       >
         <h1 className="text-secondary text-4xl font-bold mb-4">Projects</h1>
-        {[
-          "Agape",
-          "Modulab",
-          "Musabeat",
-          "Scriptura API",
-          "Mastermind",
-          "GameboyJS",
-        ].map((option, i) => (
+        {projects.map(({ id, title }: { id: string; title: string }, i) => (
           <button
-            key={option}
+            key={id}
             className={`text-3xl font-bold mb-2 hover:text-primary ${
               selectedProject === i ? "text-primary" : "text-white"
             }`}
@@ -53,7 +53,7 @@ export default function Projects() {
             {selectedProject === i && (
               <span className="text-secondary">{">"}</span>
             )}
-            {option}
+            {title}
           </button>
         ))}
       </div>
